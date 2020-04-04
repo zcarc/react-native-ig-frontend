@@ -13,6 +13,7 @@ export const CREATE_ACCOUNT = gql`
     $firstName: String
     $lastName: String
   ) {
+    # 실제 쿼리실행부
     createAccount(
       username: $username
       email: $email
