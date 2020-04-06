@@ -71,14 +71,6 @@ const PostContainer = ({
         toast.error("Can't send comment");
       }
 
-      setSelfComments([
-        ...selfComments,
-        {
-          id: Math.floor(Math.random() * 100),
-          text: comment.value,
-          user: { username: meQuery.me.username },
-        },
-      ]);
     }
   };
 
