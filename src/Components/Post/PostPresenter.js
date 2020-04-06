@@ -9,6 +9,7 @@ const Post = styled.div`
   ${(props) => props.theme.whiteBox};
   width: 100%;
   max-width: 600px;
+  user-select: none;
   margin-bottom: 25px;
 `;
 
@@ -98,6 +99,7 @@ export default ({
   createdAt,
   newComment,
   currentItem,
+  toggleLike,
 }) => (
   <Post>
     <Header>
@@ -108,11 +110,21 @@ export default ({
       </UserColumn>
     </Header>
     <Files>
-      {files && files.map((file, index) => <File key={file.id} id={file.id} src={file.url} showing={index === currentItem} />)}
+      {files &&
+        files.map((file, index) => (
+          <File
+            key={file.id}
+            id={file.id}
+            src={file.url}
+            showing={index === currentItem}
+          />
+        ))}
     </Files>
     <Meta>
       <Buttons>
-        <Button>{isLiked ? <HeartFull /> : <HeartEmpty />}</Button>
+        <Button onClick={toggleLike}>
+          {isLiked ? <HeartFull /> : <HeartEmpty />}
+        </Button>
         <Button>
           <Comment />
         </Button>
