@@ -19,6 +19,9 @@ const Section = styled.div`
 `;
 
 const SearchPresenter = ({ searchTerm, loading, data }) => {
+
+  console.log("SearchPresenter: ", searchTerm, loading, data);
+
   if (searchTerm === undefined) {
     return (
       <Wrapper>
@@ -40,9 +43,10 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
           ) : (
             data.searchUser.map((user) => (
               <UserCard
+                key={user.id}
                 username={user.username}
                 isFollowing={user.isFollowing}
-                url={user.url}
+                url={user.avatar}
                 isSelf={user.isSelf}
               />
             ))
